@@ -4,7 +4,8 @@ from setuptools import setup, find_packages
 
 
 def read(fname):
-    return open(os.path.join(os.path.dirname(__file__), fname)).read()
+    with open(os.path.join(os.path.dirname(__file__), fname)) as fobj:
+        return fobj.read()
 
 setup(
     name='google-alerts',
@@ -15,7 +16,7 @@ setup(
     author_email="brandon@9bplus.com",
     license="MIT",
     packages=find_packages(),
-    install_requires=['beautifulsoup4', 'requests'],
+    install_requires=read('requirements.txt'),
     long_description=read('README.rst'),
     classifiers=[
         'Development Status :: 4 - Beta',
